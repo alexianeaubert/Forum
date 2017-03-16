@@ -1,0 +1,240 @@
+<!-- La partie TP noté : 
+
+	 "Simuler un forum."
+	 Le stockage se fait en LocalStorage. Il y a donc un ensemble de questions, ayant des réponses. On peut entrer une question, une réponse à une question. On doit pouvoir paginer les questions (et les réponses). Il faut que ca pète sans piquer les yeux (bootstrap admis). Mais il faut quand même un peu travailler le CSS.
+	 A placer sur son Github une fois finis (e bien sûr lui donner le username).
+	
+	 Relever le 18/03 à 21h. -->
+
+<!DOCTYPE html>
+
+   <html>
+	    <head>
+	        <meta charset="UTF-8">
+	        <!-- le utf-8 permet de lire les symbole comme "é" -->
+	         <title> Forum L3 SI </title>
+	         <link rel = "stylesheet"
+	               type = "text/css"
+	               href = "forum.css">
+	         <script
+                src="https://code.jquery.com/jquery-3.1.1.js"
+                integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+                crossorigin="anonymous"> </script>
+               <script src="forum2.js"> </script>
+	    </head>
+
+	    <!-- HEADER -->
+
+	    <body onload="afficher()">
+
+	    	<a id="haut"> </a>
+
+	    	<div class="bloc">
+
+	    	<section>
+
+	    		<div class="image"> <img src="recrutement-ingénieur-info.jpg" 
+                    width="100%"
+                    height="400px">
+                </div>
+                <div class="image1 tooltip" >  
+                <a href="http://formations-iae.univ-smb.fr/fr/toute-l-offre-de-formation/licence-XA/droit-economie-gestion-DEG/licence-economie-et-gestion-l1-l2-l3-program-licence-economie-gestion/l3-systemes-d-information-subprogram-l3-systemes-d-information.html"> <img src="logo-iae.png"
+                    width="370px"
+                    height="228px"> </a>
+                </div>
+	    		
+	    	</section>
+
+	    	<div class="login">
+	    		<ul>
+	    			<li> <a> Connexion </a> </li> 
+	    			<li> <a> Déconnexion </a> </li>
+	    		</ul>
+	    	</div>
+
+
+		     <div class="titre">
+	            <h1> Le forum de discussion des L3 Système d'Information </h1> 
+	         </div>
+
+	         <div class="sousTitre">
+	            <h2> Bienvenue ! </h2>
+	            <p> Ceci est fait juste pour vous &#9786; </p>
+	         </div>
+
+	       <!-- Titre -->
+	       	 <div class="menu">
+
+	            <ul>
+	                <li> <a class="scroll" href="#forum-presentation"> <B> Présentation </B> </a> </li>
+	                <li> <a class="scroll" href="#forum-forum"> <B> Forums </B> </a> </li>
+	                <li> <a class="scroll" href="#forum-lieux"> <B> Lieux </B> </a> </li>
+	                <li> <a class="scroll" href="#forum-contact"> <B> Contact </B> </a> </li>
+	            </ul>
+
+	         </div>
+
+
+	       <!-- Présentation -->
+
+	         <div id="forum-presentation">
+	         	<div class="presentation">
+	         		<p> Présentation </p>
+	         	</div>
+
+	         	<div class="paragraphe">
+	            	<p> Ceci est le forum de discussion <B>réservé</B> aux <B>L3 SI de l'IAE Savoie Mont-Blanc</B> d'Annecy-Le-Vieux. Il va permettre aux étudiants de l'option <B>génie informatique</B> de discuter de leurs domaines : </p>
+	            		<div class="list">
+							<p> (1) La conception et la programmation des systèmes logiciels à objets </p>
+	            			<p> (2) Les technologies Web permettant de créer des applications Web enrichies côté client </p>     	
+	            		</div>
+	            	<p> La partie portant sur <B>la conception et la programmation des systèmes logiciels à objets</B> introduit les concepts liés au modèle objet et à la déclinaison de ce modèle lors du développement d’une application. Il introduit d’une part les concepts de ce modèle en utilisant le <B>langage objet Pharo</B> (dialecte de Smalltalk), d’autre part, la structuration de programmes orientés objet en utilisant ce langage. La notation UML sera également utilisée (diagramme de classes) en lien avec le langage Pharo pour concevoir et développer une application logicielle orientée objet. </p>
+					<p>La partie portant sur les <B>technologies Web</B> s’intéresse aux application enrichies et aux technologies Web côté client, en particulier l’utilisation de Javascript, HTML, CSS. </p>
+	            	<p> Ce Forum d'étudiants doit permettre aux informaticiens en herbe de la licence de <B> communiquer entre eux et de s'entraider</B>. Échanger sur vos cours, sur vos doutes et vos difficultés et faite vous aider ! </p>
+	            	<p> Même si ce forum est essentiellement consacré à l'option de génie informatique, il ne vous ai pas interdit de parler des <B>autres matières de la licence</B>, bien au contraire. </p>
+	            		<div class="encouragement">
+	            			<p><B> Maintenant il ne vous reste plus qu'à tchater ! Bon courage !! </B> </p>
+	            		</div>
+	            	</div>
+	         </div> 
+
+
+	         <!-- FORUM -->
+
+
+			 <div id="forum-forum">
+			 	<div class="forum">
+	         		<p> Forums </p>
+	         	</div>
+
+	         		<div class="discussion-forum">
+
+	         			
+	         			<input type="text" name="Recherche" id="Recherche" placeholder="Recherche"> 
+	         			<input class="loupe" type="button" value="OK"> 
+    
+                    	<div class="question">
+                   
+                    	<!--	<button class= style="margin-top:1%; margin-bottom: 5%; margin-left: 2%" id="Tab1"> Question 1 </button>
+            				<button class=style="margin-top:1%; margin-bottom: 5%; margin-left: 2%" id="Tab2"> Question 2 </button> -->
+
+
+							<form>
+
+							
+
+									<p>Vous voulez poser une question ?</p>
+									<button id="nouvelle">Nouvelle Conversation</button> 
+
+								<fieldset id="formulaire">
+
+									<label for="pseudo">Votre pseudo :</label> 
+									<input type="text" name="pseudo" id="pseudo" placeholder="Ex : Bruuuno38" size="30" maxlength="10" required=" ">
+							        <br>
+
+							       <!-- <label for="pass">Votre mot de passe :</label>
+							        <input type="password" name="pass" id="pass" placeholder="******" size="30" maxlength="10" required=" ">
+							        <br>-->
+
+							        <label for="email">Votre email :</label>
+							        <input type="email" placeholder="@" id="email" size="30" maxlength="70" required=" "> 
+							        <br>
+
+							   
+									<div id="question">	
+										<input type="text" id="objet" placeholder="Objet" size="30" maxlength="70" required=" "> <br>
+										<textarea type="text" id="post" placeholder="Posez votre question..." style="width:500px; height:100px;" ></textarea> <br>
+
+									</div>
+
+										<button id="envoyer"><a href="#forum-forum" id="envoyer2">Envoyer</a></button>
+									
+								
+								</fieldset> 	
+
+									<div id="mesposts">
+										<span id="blog">
+										<h2>Conversations </h2>
+										<ul id="entries"></ul>
+										</span>
+									</div>	
+
+
+
+                     	</div>
+                
+                	</div>
+                	
+
+
+
+	         </div>
+
+
+	         <!-- CARTE -->
+	         
+
+	         <div id="forum-lieux">
+	         	<div class="lieux">
+	         		<p> Lieux </p>
+	         	</div>
+
+	         	<div class="paragraphe-lieux">
+
+	         			<div id="map" style="width: 400px; height: 400px"> </div>
+
+            
+            <!-- Pour aller chercher une clé d'authentification, il faut taper sur google.com "get API key google maps"
+                page : Get a Key/Authentification
+                ensuite aller dans GET A KEY
+                pour finir générer la clé -->
+            
+            				<script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBBhscndvopkQSZxT3_vU54IsdxvbDhEFo &callback=myMap"> </script>
+
+
+	         		<div class="adresse">
+	         			<p> <B> IAE Savoie Mont-Blanc </B> </p>
+	         			<p> 4 Chemin de Bellevue </p>
+	         			<p> 74944 Annecy </p>
+	         		</div>
+
+	         	</div>
+
+	         </div>
+
+
+	         <!-- FOOTER -->
+
+
+	         <div id="forum-contact">
+	         	<div class="contact">
+	         		<p> Contact </p>
+	         	</div>
+
+	         	<div class="paragraphe-contact">
+		         	<p> Promo 2017 </p>
+		         	<p> Licence 3 Économie Gestion parcours Système d'Information <p>
+		         	<p> Le Forum de discussion des L3 Système d'Information </p>
+		         	<p> promoSI@gmail.com </p>
+	         	</div>
+	         </div>
+
+	         	<button class="haut">
+	         		<a class="scroll" href="#haut"> Haut de la page </a>
+	         	</button>
+
+	         <footer>
+                <p> Projet Technologie Web. - Semestre 6 L3 SI</p>
+                <p> Université Savoie Mont-Blant - Département TM</p>
+                <p> Le FORUM </p>
+             </footer>
+
+             </div>
+
+             <div class="copyright"> © AUBERT Mars 2017 • v2017.01 • Création Alexiane Aubert </div>
+
+         
+
+       </body>
+
+   </html>
